@@ -23,13 +23,12 @@ public class Main {
     private static final String RUTA_RECETAS = "recetas.dat";
     private static final String RUTA_EXPORT="recetas.xml";
     private static final String RUTA_JSON="configuracion.json";
-
+    private static int optionOld=-1;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
             System.out.println("===== GESTOR DE RECETAS=====");
-            leerJSON();
             System.out.println("0-Salir\n" +
                     "1-Crear un catálogo inicial con varias recetas.\n" +
                     "2-Mostrar todas las recetas almacenadas.\n" +
@@ -39,7 +38,7 @@ public class Main {
                     "6-Exportar recetas en XML\n");
             System.out.print("Seleccione una opcion: ");
             int option = sc.nextInt();
-            int optionOld=-1;
+
 
             if (option==0){
                 int numRecetas=leerRecetas();
@@ -335,7 +334,6 @@ public class Main {
             for (int i = 0; i < recetas.size(); i++) {
                 dIn.writeObject(recetas.get(i));
             }
-
         } catch (EOFException e) {
             System.out.println("--- Fin del archivo ---");
         } catch (IOException e) {
